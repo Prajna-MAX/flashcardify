@@ -1,95 +1,156 @@
 .card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1000px;
-  }
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust the minimum and maximum width of each card */
-    gap: 20px; /* Adjust the gap between cards */
-  }
-  
-  .card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for each card */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  perspective: 1000px;
+  background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSmKZvI3_KZyk84QGsFN3ScQkr168BBT-4Oivjp8eu9aU_od46MiBJmOywv0xkRtVj_QPUPXv2LYiDpNBo5uSXkgjaBX4Ymh9K83AS8n4GESVeU8X3hBfwOOOjtmvsg9dzR2G1KFix0Qa46InkAL_wqwc_SC6ksl0OR25eAU3QfmFnWzs24FywHcJC7A/w1600/quiz.webp");
 
-height: 200px;
-width: 1000px;
- position: relative;
-transform-style: preserve-3d;
-transition: transform 0.6s;
-  }
-  .card:hover{
-    box-shadow: 0 0 5px 2px rgba(0,0,0,.5);
-    --translate-y:-2px;
-  }
-
-  
-  .card.flip {
-    transform: rotateY(180deg);
-  }
-  
-  .front,
-  .back {
-    position: absolute;
-    backface-visibility: hidden;
-    padding: 1rem;
-  }
-  
-  .front {
-    z-index: 2;
-  }
-  
-  .back {
-    z-index: 1;
-    transform: rotateY(180deg);
-    text-align: center;
-    align-items: center;
-     justify-content: center;
-  }
-  
-  .card-body {
-    padding: 1.25rem;
-  }
-  
-  .option {
-    margin-bottom: 0.5rem;
-  }
-  .header{
-    display:flex;
-    gap:2rem;
-    background-color: antiquewhite;
-   width: 100%;
-    height:80px ;
-    align-items: center;
-    justify-content: space-between;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    margin:5px
-  }
-  .btn{
-    float:right;
-    background-color: rgb(16, 142, 192);
-    margin-right: 20rem;
-    
-  }
-  .btn:hover{
-    background-color:rgb(125, 125, 133)
-  }
-  .option{
-    background-color: white;
-    border: 0;
-    display: block;
-    left: 0;
-    padding:0;
-
-  }
-  .correct {
-   
-    color: green; /* Optionally, adjust text color for better visibility */
 }
 
-.incorrect{
-    color: red;
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 1rem;
+  justify-content: space-between;
+  background-size: cover;
+  background-position: center;
+ 
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  height:auto; /* Ensures a balanced look for shorter content */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s, box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  min-height: 200px;
+  backface-visibility: hidden;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.front {
+  z-index: 2;
+}
+
+.back {
+  z-index: 1;
+  transform: rotateY(180deg);
+  text-align: center;
+}
+
+/* Adjusted question styling for flexibility */
+.question {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* Option styling */
+.option {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333;
+  margin: 0.25rem 0;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Correct and incorrect feedback */
+.correct {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.incorrect {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  padding: 1rem 2rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+/* Header title styling */
+.header h1 {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Category and number inputs styling */
+.header select,
+.header input[type="number"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.header select:focus,
+.header input[type="number"]:focus {
+  border-color: #108ec0;
+}
+
+/* Generate button styling */
+.header .btn {
+  background-color: #108ec0;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.header .btn:hover {
+  background-color: #0c6a94;
+  transform: translateY(-2px);
+}
+.options {
+  display: flex;
+  flex-direction: column; /* Stack options vertically */
+}
+
+.option {
+  display: block; /* Ensure each button takes up the full line */
+  /* Optional: add spacing between options */
 }

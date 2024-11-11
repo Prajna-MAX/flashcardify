@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Flashcardlist from "./FlashcardList";
 import axios from "axios";
+import './Flasscard.css'
 
 function App() {
   const [categories, setCategories] = useState([]);

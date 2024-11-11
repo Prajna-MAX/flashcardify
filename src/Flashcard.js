@@ -44,30 +44,31 @@ export default function Flashcard({ flashcard }) {
           <h5 className="question">{flashcard.question}</h5>
 
           <div className="options">
-            {flashcard.options.map((option) => {
-              const isCorrect = checkAnswer(option);
-              return (
-                <button
-                  className={`option ${
-                    selectedOption === option
-                      ? isCorrect
-                        ? "correct"
-                        : "incorrect"
-                      : ""
-                  }`}
-                  key={option}
-                  onClick={() => {
-                    setSelectedOption(option);
-                    if (!isCorrect) {
-                      wrongAnswer();
-                    }
-                  }}
-                >
-                  {option}
-                </button>
-              );
-            })}
-          </div>
+  {flashcard.options.map((option) => {
+    const isCorrect = checkAnswer(option);
+    return (
+      <button
+        className={`option ${
+          selectedOption === option
+            ? isCorrect
+              ? "correct"
+              : "incorrect"
+            : ""
+        }`}
+        key={option}
+        onClick={() => {
+          setSelectedOption(option);
+          if (!isCorrect) {
+            wrongAnswer();
+          }
+        }}
+      >
+        {option}
+      </button>
+    );
+  })}
+</div>
+
         </div>
 
         <div className="back" ref={backEl}>
